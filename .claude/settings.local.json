@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find /home/julianalvarez/Desktop/JulianAlvarezOS -maxdepth 2 -type f -name \"*.json\" -o -name \"*.md\" -o -name \"Makefile\" -o -name \".cursorrules\" 2>/dev/null | head -30)",
+      "Bash(tree -L 3 -I 'node_modules' /home/julianalvarez/Desktop/JulianAlvarezOS/ResumeOS/ 2>/dev/null || find /home/julianalvarez/Desktop/JulianAlvarezOS/ResumeOS -not -path '*/node_modules/*' -not -path '*/.next/*' -type d | sort | head -30)",
+      "Bash(gh auth:*)"
+    ]
+  }
+}

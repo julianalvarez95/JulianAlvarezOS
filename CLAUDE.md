@@ -54,3 +54,17 @@ Alternative linear layout rendered when viewport < 1024 px.
 - **Radix UI** — base primitives for all interactive Shadcn components.
 - **Recharts** — used in `metrics-app.tsx` for data visualizations.
 - **Vercel Analytics** — injected in `app/layout.tsx`; no extra setup needed locally.
+
+## Planned improvements
+
+`ResumeOS/improvements-prd.md` contains prioritized PRDs for planned features (in Spanish):
+
+| Priority | Feature |
+|----------|---------|
+| P0 | Real portfolio content (replace all placeholders) |
+| P1 | macOS-style dock magnification animation |
+| P2 | Window resizing (drag borders/corners) |
+| P3 | Full keyboard navigation + Command Palette (Cmd+K) |
+| P4 | Terminal easter egg app (`julian@portfolio:~$`) |
+| P5 | Genie-effect minimize animation |
+| P6 | Mobile app launcher (iOS/Android-style) |

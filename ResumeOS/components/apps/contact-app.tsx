@@ -1,24 +1,18 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Linkedin, Github, Mail, Download, ExternalLink } from "lucide-react"
+import { Linkedin, Mail, Download, ExternalLink } from "lucide-react"
 
 const links = [
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/",
+    href: "https://www.linkedin.com/in/julianalvarez00",
     icon: Linkedin,
     description: "Connect professionally",
   },
   {
-    label: "GitHub",
-    href: "https://github.com/",
-    icon: Github,
-    description: "See my code",
-  },
-  {
     label: "Email",
-    href: "mailto:julian@example.com",
+    href: "mailto:julianignacioalvarez95@gmail.com",
     icon: Mail,
     description: "Get in touch",
   },
@@ -31,13 +25,12 @@ export function ContactApp() {
       <div className="text-center">
         <h2 className="text-xl font-bold text-foreground mb-2">{"Let's Connect"}</h2>
         <p className="text-sm text-muted-foreground max-w-sm">
-          {"I'm always interested in hearing about new product challenges, "} 
-          interesting side projects, or just chatting about product management.
+          Currently at WillDom leading Wave CRM. Open to interesting conversations about product, AI, and what{"'"}s next.
         </p>
       </div>
 
       {/* Contact Links */}
-      <div className="grid w-full gap-3 sm:grid-cols-3">
+      <div className="grid w-full gap-3 sm:grid-cols-2">
         {links.map((link) => {
           const Icon = link.icon
           return (
@@ -76,7 +69,7 @@ export function ContactApp() {
           <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
         </span>
         <span className="text-sm text-foreground/80">
-          Currently open to new opportunities
+          Open to interesting product conversations
         </span>
       </div>
 

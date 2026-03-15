@@ -35,7 +35,7 @@ const frameworks = [
 4. **Guardrail metrics**: What shouldn't get worse? (e.g., conversion rate while testing engagement)
 5. **Decision criteria**: Pre-commit to ship/kill/iterate thresholds
 
-**Tools I use**: Amplitude for analytics, Statsig for experiments, Notion for documentation.
+**Tools I use**: BigQuery / Data Studio / Looker for analytics, Notion for documentation.
 
 **Win rate**: ~34% of experiments show statistically significant positive results. The other 66% are still valuable learning.`,
   },

@@ -1,16 +1,17 @@
 "use client"
 
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 
 const skills = [
   "Product Strategy",
-  "Experimentation",
-  "Product Analytics",
-  "AI Products",
-  "Technical Collaboration",
-  "User Research",
-  "Roadmap Planning",
-  "Agile/Scrum",
+  "Product Discovery",
+  "Agile / Scrum / Kanban",
+  "Stakeholder Management",
+  "Data-Driven Development",
+  "Go-to-Market Strategy",
+  "AI Product Exploration",
+  "LATAM Markets",
 ]
 
 export function AboutApp() {
@@ -18,8 +19,14 @@ export function AboutApp() {
     <div className="flex flex-col gap-6 md:flex-row">
       {/* Profile Card */}
       <div className="flex flex-col items-center gap-4 rounded-xl bg-secondary/30 p-6 border border-border/50 md:w-64 shrink-0">
-        <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-br from-primary to-accent text-3xl font-bold text-primary-foreground">
-          JA
+        <div className="h-24 w-24 overflow-hidden rounded-full border-2 border-primary/30">
+          <Image
+            src="/JA-Avatar.jpeg"
+            alt="Julián Álvarez"
+            width={96}
+            height={96}
+            className="h-full w-full object-cover"
+          />
         </div>
         <div className="text-center">
           <h2 className="text-xl font-bold text-foreground">Julián Álvarez</h2>
@@ -38,17 +45,15 @@ export function AboutApp() {
         <div>
           <h3 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">About</h3>
           <p className="text-foreground/90 leading-relaxed">
-            Product Manager with 6+ years of experience building digital products across 
-            <span className="text-primary font-medium"> SaaS</span>, 
-            <span className="text-primary font-medium"> marketplaces</span>, and 
-            <span className="text-primary font-medium"> internal tools</span>. 
-            I specialize in turning complex problems into simple, scalable solutions through 
-            experimentation and data-driven decision making.
+            Product Manager with 6+ years across
+            <span className="text-primary font-medium"> SaaS</span>,
+            <span className="text-primary font-medium"> e-commerce</span>, and
+            <span className="text-primary font-medium"> B2B/B2C marketplaces</span> in LATAM.
+            Currently leading Wave CRM at WillDom with a team of 11 engineers.
           </p>
           <p className="mt-3 text-foreground/90 leading-relaxed">
-            Currently focused on AI-powered products and automation systems. 
-            I thrive at the intersection of business strategy and technical execution, 
-            working closely with engineering teams to ship products that move metrics.
+            Previously at MercadoLibre (NASDAQ: MELI) and Mudafy (YC S19).
+            Interested in the intersection of data, automation, and AI.
           </p>
         </div>
 
@@ -70,9 +75,9 @@ export function AboutApp() {
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
           {[
             { label: "Years XP", value: "6+" },
-            { label: "Products", value: "12" },
-            { label: "Teams Led", value: "8" },
-            { label: "Impact", value: "$3M+" },
+            { label: "Companies", value: "6" },
+            { label: "User Interviews", value: "50+" },
+            { label: "Stakeholders", value: "10+" },
           ].map((stat) => (
             <div key={stat.label} className="rounded-lg bg-secondary/30 p-3 text-center border border-border/50">
               <p className="font-mono text-xl font-bold text-accent">{stat.value}</p>

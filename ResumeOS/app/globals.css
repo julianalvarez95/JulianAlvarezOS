@@ -3,76 +3,76 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Dark tech aesthetic - deep slate with indigo and neon green accents */
+/* Catppuccin Mocha */
 :root {
-  --background: oklch(0.13 0.02 260);
-  --foreground: oklch(0.95 0.01 260);
-  --card: oklch(0.16 0.02 260);
-  --card-foreground: oklch(0.95 0.01 260);
-  --popover: oklch(0.14 0.02 260);
-  --popover-foreground: oklch(0.95 0.01 260);
-  --primary: oklch(0.65 0.18 260);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.20 0.02 260);
-  --secondary-foreground: oklch(0.90 0.01 260);
-  --muted: oklch(0.22 0.02 260);
-  --muted-foreground: oklch(0.65 0.02 260);
-  --accent: oklch(0.75 0.20 145);
-  --accent-foreground: oklch(0.13 0.02 260);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.25 0.03 260);
-  --input: oklch(0.20 0.02 260);
-  --ring: oklch(0.65 0.18 260);
-  --chart-1: oklch(0.65 0.18 260);
-  --chart-2: oklch(0.75 0.20 145);
-  --chart-3: oklch(0.60 0.15 200);
-  --chart-4: oklch(0.70 0.15 50);
-  --chart-5: oklch(0.65 0.20 320);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.12 0.02 260);
-  --sidebar-foreground: oklch(0.95 0.01 260);
-  --sidebar-primary: oklch(0.65 0.18 260);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.20 0.02 260);
-  --sidebar-accent-foreground: oklch(0.95 0.01 260);
-  --sidebar-border: oklch(0.25 0.03 260);
-  --sidebar-ring: oklch(0.65 0.18 260);
+  --background:    oklch(0.14 0.025 280);   /* Base     #1e1e2e */
+  --foreground:    oklch(0.87 0.045 260);   /* Text     #cdd6f4 */
+  --card:          oklch(0.22 0.025 275);   /* Surface0 #313244 */
+  --card-foreground: oklch(0.87 0.045 260);
+  --popover:       oklch(0.22 0.025 275);
+  --popover-foreground: oklch(0.87 0.045 260);
+  --primary:       oklch(0.82 0.10  260);   /* Lavender #b4befe */
+  --primary-foreground: oklch(0.14 0.025 280);
+  --secondary:     oklch(0.28 0.025 275);   /* Surface1 #45475a */
+  --secondary-foreground: oklch(0.87 0.045 260);
+  --muted:         oklch(0.28 0.025 275);
+  --muted-foreground: oklch(0.68 0.04 265); /* Subtext0 #a6adc8 */
+  --accent:        oklch(0.77 0.14  295);   /* Mauve    #cba6f7 */
+  --accent-foreground: oklch(0.14 0.025 280);
+  --destructive:   oklch(0.65 0.20   20);   /* Red      #f38ba8 */
+  --destructive-foreground: oklch(0.14 0.025 280);
+  --border:        oklch(0.38 0.03  270);   /* Surface2 #585b70 */
+  --input:         oklch(0.28 0.025 275);
+  --ring:          oklch(0.82 0.10  260);
+  --chart-1:       oklch(0.82 0.10  260);
+  --chart-2:       oklch(0.77 0.14  295);
+  --chart-3:       oklch(0.75 0.14  220);
+  --chart-4:       oklch(0.80 0.12   80);
+  --chart-5:       oklch(0.72 0.16  340);
+  --radius: 0.625rem;
+  --sidebar:       oklch(0.14 0.025 280);
+  --sidebar-foreground: oklch(0.87 0.045 260);
+  --sidebar-primary: oklch(0.82 0.10 260);
+  --sidebar-primary-foreground: oklch(0.14 0.025 280);
+  --sidebar-accent: oklch(0.28 0.025 275);
+  --sidebar-accent-foreground: oklch(0.87 0.045 260);
+  --sidebar-border: oklch(0.38 0.03 270);
+  --sidebar-ring:  oklch(0.82 0.10 260);
 }
 
 .dark {
-  --background: oklch(0.13 0.02 260);
-  --foreground: oklch(0.95 0.01 260);
-  --card: oklch(0.16 0.02 260);
-  --card-foreground: oklch(0.95 0.01 260);
-  --popover: oklch(0.14 0.02 260);
-  --popover-foreground: oklch(0.95 0.01 260);
-  --primary: oklch(0.65 0.18 260);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.20 0.02 260);
-  --secondary-foreground: oklch(0.90 0.01 260);
-  --muted: oklch(0.22 0.02 260);
-  --muted-foreground: oklch(0.65 0.02 260);
-  --accent: oklch(0.75 0.20 145);
-  --accent-foreground: oklch(0.13 0.02 260);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.25 0.03 260);
-  --input: oklch(0.20 0.02 260);
-  --ring: oklch(0.65 0.18 260);
-  --chart-1: oklch(0.65 0.18 260);
-  --chart-2: oklch(0.75 0.20 145);
-  --chart-3: oklch(0.60 0.15 200);
-  --chart-4: oklch(0.70 0.15 50);
-  --chart-5: oklch(0.65 0.20 320);
-  --sidebar: oklch(0.12 0.02 260);
-  --sidebar-foreground: oklch(0.95 0.01 260);
-  --sidebar-primary: oklch(0.65 0.18 260);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.20 0.02 260);
-  --sidebar-accent-foreground: oklch(0.95 0.01 260);
-  --sidebar-border: oklch(0.25 0.03 260);
-  --sidebar-ring: oklch(0.65 0.18 260);
+  --background:    oklch(0.14 0.025 280);
+  --foreground:    oklch(0.87 0.045 260);
+  --card:          oklch(0.22 0.025 275);
+  --card-foreground: oklch(0.87 0.045 260);
+  --popover:       oklch(0.22 0.025 275);
+  --popover-foreground: oklch(0.87 0.045 260);
+  --primary:       oklch(0.82 0.10  260);
+  --primary-foreground: oklch(0.14 0.025 280);
+  --secondary:     oklch(0.28 0.025 275);
+  --secondary-foreground: oklch(0.87 0.045 260);
+  --muted:         oklch(0.28 0.025 275);
+  --muted-foreground: oklch(0.68 0.04 265);
+  --accent:        oklch(0.77 0.14  295);
+  --accent-foreground: oklch(0.14 0.025 280);
+  --destructive:   oklch(0.65 0.20   20);
+  --destructive-foreground: oklch(0.14 0.025 280);
+  --border:        oklch(0.38 0.03  270);
+  --input:         oklch(0.28 0.025 275);
+  --ring:          oklch(0.82 0.10  260);
+  --chart-1:       oklch(0.82 0.10  260);
+  --chart-2:       oklch(0.77 0.14  295);
+  --chart-3:       oklch(0.75 0.14  220);
+  --chart-4:       oklch(0.80 0.12   80);
+  --chart-5:       oklch(0.72 0.16  340);
+  --sidebar:       oklch(0.14 0.025 280);
+  --sidebar-foreground: oklch(0.87 0.045 260);
+  --sidebar-primary: oklch(0.82 0.10 260);
+  --sidebar-primary-foreground: oklch(0.14 0.025 280);
+  --sidebar-accent: oklch(0.28 0.025 275);
+  --sidebar-accent-foreground: oklch(0.87 0.045 260);
+  --sidebar-border: oklch(0.38 0.03 270);
+  --sidebar-ring:  oklch(0.82 0.10 260);
 }
 
 @theme inline {
@@ -123,4 +123,15 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes dock-bounce {
+  0%   { transform: translateY(0) }
+  25%  { transform: translateY(-10px) }
+  50%  { transform: translateY(0) }
+  75%  { transform: translateY(-5px) }
+  100% { transform: translateY(0) }
+}
+.animate-dock-bounce {
+  animation: dock-bounce 400ms ease-out;
 }

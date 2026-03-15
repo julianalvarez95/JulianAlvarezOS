@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Wifi, Battery, Volume2 } from "lucide-react"
+import { Wifi, Battery, Volume2, Settings } from "lucide-react"
 
 export function TopBar() {
   const [time, setTime] = useState<string>("")
@@ -10,15 +10,15 @@ export function TopBar() {
   useEffect(() => {
     const updateDateTime = () => {
       const now = new Date()
-      setTime(now.toLocaleTimeString("en-US", { 
-        hour: "2-digit", 
+      setTime(now.toLocaleTimeString("es-ES", {
+        hour: "2-digit",
         minute: "2-digit",
-        hour12: true 
+        hour12: false,
       }))
-      setDate(now.toLocaleDateString("en-US", {
+      setDate(now.toLocaleDateString("es-ES", {
         weekday: "short",
+        day: "numeric",
         month: "short",
-        day: "numeric"
       }))
     }
 
@@ -28,23 +28,30 @@ export function TopBar() {
   }, [])
 
   return (
-    <div className="absolute top-0 left-0 right-0 z-50 flex h-8 items-center justify-between bg-card/80 px-4 backdrop-blur-md border-b border-border/50">
-      <div className="flex items-center gap-2">
-        <span className="font-mono text-xs font-semibold text-primary">PM_OS</span>
-        <span className="text-xs text-muted-foreground">|</span>
-        <span className="text-xs text-foreground/80">Julián Álvarez</span>
+    <div className="absolute top-0 left-0 right-0 z-50 grid h-8 grid-cols-3 items-center bg-card/90 px-4 backdrop-blur-md border-b border-border">
+      {/* Left: Activities */}
+      <div className="flex items-center">
+        <button className="px-3 py-0.5 rounded-md text-xs font-medium text-foreground/80 hover:bg-secondary/50 transition-colors">
+          Activities
+        </button>
       </div>
-      
-      <div className="flex items-center gap-4">
+
+      {/* Center: date + time */}
+      <div className="flex items-center justify-center gap-2">
+        <span className="text-xs text-foreground/70">{date}</span>
+        <span className="font-mono text-xs font-semibold text-foreground">{time}</span>
+      </div>
+
+      {/* Right: system tray */}
+      <div className="flex items-center justify-end gap-3">
         <div className="flex items-center gap-2 text-muted-foreground">
-          <Wifi className="h-3.5 w-3.5" />
           <Volume2 className="h-3.5 w-3.5" />
+          <Wifi className="h-3.5 w-3.5" />
           <Battery className="h-3.5 w-3.5" />
         </div>
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-foreground/80">{date}</span>
-          <span className="font-mono text-xs font-medium text-foreground">{time}</span>
-        </div>
+        <button className="flex items-center justify-center rounded-md p-0.5 text-muted-foreground hover:bg-secondary/50 transition-colors">
+          <Settings className="h-3.5 w-3.5" />
+        </button>
       </div>
     </div>
   )

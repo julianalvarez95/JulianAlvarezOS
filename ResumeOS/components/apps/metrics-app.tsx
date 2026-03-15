@@ -1,47 +1,47 @@
 "use client"
 
-import { Package, FlaskConical, DollarSign, Users, TrendingUp, Target, Zap, BarChart3 } from "lucide-react"
+import { Package, FlaskConical, Users, TrendingUp, Target, Zap, BarChart3 } from "lucide-react"
 
 const metrics = [
   {
-    label: "Products Shipped",
-    value: "12",
+    label: "Years in Product",
+    value: "6+",
     icon: Package,
-    change: "+3 this year",
+    change: "LATAM markets",
     color: "text-primary",
     bgColor: "bg-primary/20",
   },
   {
-    label: "Experiments Run",
-    value: "80+",
+    label: "User Interviews",
+    value: "50+",
     icon: FlaskConical,
-    change: "A/B tests & pilots",
+    change: "Research-first",
     color: "text-accent",
     bgColor: "bg-accent/20",
   },
   {
-    label: "Revenue Influenced",
-    value: "$3M+",
-    icon: DollarSign,
-    change: "ARR impact",
+    label: "Engineers in Team",
+    value: "11",
+    icon: Users,
+    change: "Cross-functional",
     color: "text-chart-4",
     bgColor: "bg-chart-4/20",
   },
   {
-    label: "Teams Collaborated",
-    value: "8",
-    icon: Users,
-    change: "Cross-functional",
+    label: "PM Success Rate",
+    value: "95%",
+    icon: TrendingUp,
+    change: "Novolabs data",
     color: "text-chart-3",
     bgColor: "bg-chart-3/20",
   },
 ]
 
 const additionalMetrics = [
-  { label: "Avg. Experiment Win Rate", value: "34%", icon: Target },
-  { label: "Features Launched", value: "45+", icon: Zap },
-  { label: "User Interviews", value: "200+", icon: Users },
-  { label: "OKRs Achieved", value: "92%", icon: TrendingUp },
+  { label: "PM Roles", value: "6", icon: Target },
+  { label: "Markets", value: "4", icon: Zap },
+  { label: "Stakeholders", value: "10+", icon: Users },
+  { label: "Backlog Items", value: "40+", icon: TrendingUp },
 ]
 
 export function MetricsApp() {

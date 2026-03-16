@@ -40,40 +40,39 @@ const bioItems = [
   {
     text: (
       <>
-        PM con <span className="text-primary font-medium">6+ años</span> construyendo productos digitales en{" "}
+        PM with <span className="text-primary font-medium">6+ years</span> building digital products across{" "}
         <span className="text-primary font-medium">SaaS</span>,{" "}
-        <span className="text-primary font-medium">e-commerce</span> y{" "}
-        <span className="text-primary font-medium">marketplaces B2B/B2C</span> en LATAM.
+        <span className="text-primary font-medium">e-commerce</span>, and{" "}
+        <span className="text-primary font-medium">B2B/B2C marketplaces</span> in LATAM.
       </>
     ),
   },
   {
     text: (
       <>
-        Actualmente liderando el roadmap de{" "}
-        <span className="text-primary font-medium">Wave CRM en WillDom</span>, coordinando un equipo
-        cross-functional de 11 ingenieros desde discovery hasta go-to-market.
+        Currently leading the roadmap for{" "}
+        <span className="text-primary font-medium">Wave CRM at WillDom</span>, coordinating a
+        cross-functional team of 11 engineers from discovery to go-to-market.
       </>
     ),
   },
   {
     text: (
       <>
-        Previamente en <span className="text-primary font-medium">MercadoLibre (NASDAQ: MELI)</span> — donde construí
-        infraestructura de catálogo y estrategia de verticales en Argentina, Brasil y México — y{" "}
-        <span className="text-primary font-medium">Mudafy (YC S19)</span>, donde lideré herramientas internas y CRM
-        para una proptech con $200M+ en valor de transacciones anualizadas.
+        Previously at <span className="text-primary font-medium">MercadoLibre (NASDAQ: MELI)</span> — where I built
+        catalog infrastructure and vertical strategy across Argentina, Brazil, and Mexico — and{" "}
+        <span className="text-primary font-medium">Mudafy (YC S19)</span>, where I led internal tooling and CRM
+        for a proptech with $200M+ in annualized transaction value.
       </>
     ),
   },
   {
     text: (
       <>
-        Interesado en la intersección entre{" "}
-        <span className="text-primary font-medium">datos</span>,{" "}
-        <span className="text-primary font-medium">automatización</span> e{" "}
-        <span className="text-primary font-medium">inteligencia artificial</span> aplicados a problemas reales de
-        producto.
+        Interested in the intersection of{" "}
+        <span className="text-primary font-medium">data</span>,{" "}
+        <span className="text-primary font-medium">automation</span>, and{" "}
+        <span className="text-primary font-medium">artificial intelligence</span> applied to real product problems.
       </>
     ),
   },

@@ -4,7 +4,6 @@ import { useState } from "react"
 import { cn } from "@/lib/utils"
 import { AboutApp } from "../apps/about-app"
 import { ProjectsApp } from "../apps/projects-app"
-import { MetricsApp } from "../apps/metrics-app"
 import { ProductThinkingApp } from "../apps/product-thinking-app"
 import { ExperimentsApp } from "../apps/experiments-app"
 import { WritingApp } from "../apps/writing-app"
@@ -12,7 +11,6 @@ import { ContactApp } from "../apps/contact-app"
 import {
   User,
   FolderKanban,
-  BarChart3,
   Lightbulb,
   FlaskConical,
   PenLine,
@@ -20,15 +18,14 @@ import {
   ChevronDown,
 } from "lucide-react"
 
-type AppId = "about" | "projects" | "metrics" | "thinking" | "experiments" | "writing" | "contact"
+type AppId = "about" | "projects" | "thinking" | "experiments" | "writing" | "contact"
 
 const sections: { id: AppId; label: string; icon: typeof User; component: React.ComponentType }[] = [
   { id: "about", label: "About", icon: User, component: AboutApp },
-  { id: "projects", label: "Projects", icon: FolderKanban, component: ProjectsApp },
-  { id: "metrics", label: "Metrics", icon: BarChart3, component: MetricsApp },
+  { id: "projects", label: "Experience", icon: FolderKanban, component: ProjectsApp },
   { id: "thinking", label: "Product Thinking", icon: Lightbulb, component: ProductThinkingApp },
   { id: "experiments", label: "Experiments", icon: FlaskConical, component: ExperimentsApp },
-  { id: "writing", label: "Writing", icon: PenLine, component: WritingApp },
+  { id: "writing", label: "Resources", icon: PenLine, component: WritingApp },
   { id: "contact", label: "Contact", icon: Mail, component: ContactApp },
 ]
 

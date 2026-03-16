@@ -22,6 +22,7 @@ import {
 } from "lucide-react"
 import { toast } from "sonner"
 import { RecruiterWidget } from "./RecruiterWidget"
+import posthog from "posthog-js"
 
 type AppId = "about" | "projects" | "thinking" | "experiments" | "writing" | "contact" | "terminal"
 
@@ -104,6 +105,8 @@ export function Desktop() {
       return
     }
 
+    posthog.capture("app_opened", { app_id: appId })
+
     const newZIndex = highestZIndex + 1
     setHighestZIndex(newZIndex)
     setOpenWindows((prev) => [
@@ -119,6 +122,7 @@ export function Desktop() {
   }
 
   const closeApp = (appId: AppId) => {
+    posthog.capture("app_closed", { app_id: appId })
     setOpenWindows((prev) => prev.filter((w) => w.id !== appId))
   }
 

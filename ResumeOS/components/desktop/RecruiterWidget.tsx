@@ -2,6 +2,7 @@
 
 import { useEffect } from "react"
 import { X } from "lucide-react"
+import posthog from "posthog-js"
 
 interface RecruiterWidgetProps {
   onOpenContact: () => void
@@ -29,7 +30,7 @@ export function RecruiterWidget({ onOpenContact, onDismiss }: RecruiterWidgetPro
       }}
     >
       <button
-        onClick={onDismiss}
+        onClick={() => { posthog.capture("recruiter_widget_dismissed"); onDismiss() }}
         className="absolute top-2 right-2 text-white/40 hover:text-white/80 transition-colors"
         aria-label="Dismiss"
       >
@@ -40,7 +41,7 @@ export function RecruiterWidget({ onOpenContact, onDismiss }: RecruiterWidgetPro
         <div className="text-[#4ADE80]">Senior PM @ WillDom</div>
         <div className="text-white/60">Led Wave CRM · team of 11</div>
         <button
-          onClick={onOpenContact}
+          onClick={() => { posthog.capture("recruiter_widget_contact_clicked"); onOpenContact() }}
           className="mt-3 text-[#4ADE80] hover:text-white transition-colors flex items-center gap-1"
         >
           → Let&apos;s talk

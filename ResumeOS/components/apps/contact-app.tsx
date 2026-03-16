@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Linkedin, Mail, Download, ExternalLink } from "lucide-react"
+import posthog from "posthog-js"
 
 const links = [
   {
@@ -39,6 +40,7 @@ export function ContactApp() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => posthog.capture("contact_link_clicked", { link_label: link.label, link_href: link.href })}
               className="group flex flex-col items-center gap-2 rounded-xl bg-secondary/30 p-4 border border-border/50 transition-all hover:bg-secondary/50 hover:border-primary/30 hover:shadow-lg"
             >
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20 border border-primary/30 transition-transform group-hover:scale-110">
@@ -56,6 +58,7 @@ export function ContactApp() {
 
       {/* Download CV */}
       <Button
+        onClick={() => posthog.capture("cv_download_clicked")}
         className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground"
       >
         <Download className="mr-2 h-4 w-4" />

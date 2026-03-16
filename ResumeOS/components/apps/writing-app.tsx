@@ -3,6 +3,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Users, Headphones, BookOpen, ExternalLink } from "lucide-react"
+import posthog from "posthog-js"
 
 const referentes = [
   {
@@ -167,7 +168,7 @@ export function WritingApp() {
         <span className="text-xs font-mono uppercase tracking-wider">Curated Knowledge Hub</span>
       </div>
 
-      <Tabs defaultValue="referentes">
+      <Tabs defaultValue="referentes" onValueChange={(tab) => posthog.capture("resources_tab_switched", { tab })}>
         <TabsList className="w-full">
           <TabsTrigger value="referentes" className="flex-1 flex items-center gap-1.5">
             <Users className="h-3.5 w-3.5" />
@@ -200,7 +201,7 @@ export function WritingApp() {
                 <Badge variant="outline" className="text-xs border-border/50 text-muted-foreground whitespace-nowrap">
                   {person.focus}
                 </Badge>
-                <a href={person.url} target="_blank" rel="noopener noreferrer" className="opacity-0 group-hover:opacity-60 transition-opacity">
+                <a href={person.url} target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture("resource_link_clicked", { resource_type: "referente", resource_name: person.name, resource_url: person.url })} className="opacity-0 group-hover:opacity-60 transition-opacity">
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" />
                 </a>
               </div>
@@ -222,7 +223,7 @@ export function WritingApp() {
                 <Badge variant="outline" className="text-xs border-border/50 text-muted-foreground whitespace-nowrap">
                   {podcast.focus}
                 </Badge>
-                <a href={podcast.url} target="_blank" rel="noopener noreferrer" className="opacity-0 group-hover:opacity-60 transition-opacity">
+                <a href={podcast.url} target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture("resource_link_clicked", { resource_type: "podcast", resource_name: podcast.name, resource_url: podcast.url })} className="opacity-0 group-hover:opacity-60 transition-opacity">
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" />
                 </a>
               </div>
@@ -244,7 +245,7 @@ export function WritingApp() {
                 <Badge variant="outline" className="text-xs border-border/50 text-muted-foreground whitespace-nowrap">
                   {book.category}
                 </Badge>
-                <a href={book.url} target="_blank" rel="noopener noreferrer" className="opacity-0 group-hover:opacity-60 transition-opacity">
+                <a href={book.url} target="_blank" rel="noopener noreferrer" onClick={() => posthog.capture("resource_link_clicked", { resource_type: "book", resource_name: book.title, resource_url: book.url })} className="opacity-0 group-hover:opacity-60 transition-opacity">
                   <ExternalLink className="h-3.5 w-3.5 text-muted-foreground" />
                 </a>
               </div>

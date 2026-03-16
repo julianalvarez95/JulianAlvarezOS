@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
+import posthog from "posthog-js"
 
 interface TimelineEntry {
   id: string
@@ -152,6 +153,10 @@ export function ProjectsApp() {
   const [expandedId, setExpandedId] = useState<string | null>("willdom")
 
   const toggle = (id: string) => {
+    const willExpand = expandedId !== id
+    if (willExpand) {
+      posthog.capture("experience_entry_expanded", { company_id: id })
+    }
     setExpandedId((prev) => (prev === id ? null : id))
   }
 

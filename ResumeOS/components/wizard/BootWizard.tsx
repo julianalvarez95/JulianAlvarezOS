@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { BootSequence } from "./BootSequence"
 import { PersonaSelect } from "./PersonaSelect"
 import { useWizard } from "@/hooks/useWizard"
+import posthog from "posthog-js"
 
 type Phase = "booting" | "selecting" | "complete"
 
@@ -26,6 +27,7 @@ export function BootWizard({ onComplete }: BootWizardProps) {
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
+        posthog.capture("wizard_skipped")
         skipWizard()
         onComplete(null)
       }
@@ -40,6 +42,7 @@ export function BootWizard({ onComplete }: BootWizardProps) {
 
   const handlePersonaSelect = useCallback(
     (persona: "recruiter" | "explorer") => {
+      posthog.capture("wizard_persona_selected", { persona })
       completeWizard(persona)
       setPhase("complete")
       onComplete(persona)

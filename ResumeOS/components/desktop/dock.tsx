@@ -71,11 +71,11 @@ export function Dock({ apps, openWindows, onAppClick }: DockProps) {
             >
               <div
                 className={cn(
-                  "flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-secondary to-card border border-border shadow-lg",
+                  "flex h-10 w-10 items-center justify-center rounded-lg bg-card/50 border border-border/40 shadow-lg",
                   bouncingId === app.id && "animate-dock-bounce"
                 )}
               >
-                <Icon className="h-5 w-5 text-primary" />
+                <Icon className="h-5 w-5 text-foreground/70" />
               </div>
 
               {/* App label tooltip */}

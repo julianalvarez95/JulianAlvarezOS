@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect, useCallback } from "react"
+import posthog from "posthog-js"
 
 type LineType = "input" | "output" | "error" | "system"
 
@@ -287,6 +288,8 @@ export function TerminalApp() {
     const parts = lower.split(/\s+/)
     const base = parts[0]
 
+    posthog.capture("terminal_command_executed", { command: base })
+
     // Special: clear
     if (lower === "clear") {
       clearLines()
@@ -354,6 +357,7 @@ export function TerminalApp() {
 
     // rerun-wizard
     if (lower === "rerun-wizard" || lower === "wizard") {
+      posthog.capture("wizard_rerun")
       outLines.push(makeLine("output", "Clearing wizard state... Rebooting in 1s.", nextId()))
       addLines(...outLines)
       setTimeout(() => {

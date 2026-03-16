@@ -100,8 +100,6 @@ function getWindowGeometry(appId: AppId): {
   return { size: { width: w, height: h }, position: { x, y } }
 }
 
-const ABOUT_WINDOW_WIDTH = 820
-const ABOUT_WINDOW_HEIGHT = 500
 
 export function Desktop() {
   const [openWindows, setOpenWindows] = useState<WindowState[]>([])
@@ -177,8 +175,7 @@ export function Desktop() {
     localStorage.setItem("wizardAutoOpened", "1")
 
     if (persona === "recruiter") {
-      const x = Math.max(160, Math.round((window.innerWidth - ABOUT_WINDOW_WIDTH) / 2))
-      const y = Math.max(48, Math.round((window.innerHeight - ABOUT_WINDOW_HEIGHT) / 2))
+      const { size, position } = getWindowGeometry("about")
 
       setHighestZIndex(11)
       setOpenWindows((prevW) => {
@@ -188,8 +185,8 @@ export function Desktop() {
             id: "about",
             isMinimized: false,
             zIndex: 11,
-            position: { x, y },
-            size: { width: ABOUT_WINDOW_WIDTH, height: ABOUT_WINDOW_HEIGHT },
+            position,
+            size,
           },
         ]
       })

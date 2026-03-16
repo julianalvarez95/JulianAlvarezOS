@@ -14,8 +14,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Julián Álvarez | Product Manager OS',
-  description: 'Personal portfolio of Julián Álvarez - Product Manager specializing in SaaS, marketplaces, and AI products',
+  title: 'Julian Alvarez | Product Manager OS',
+  description: 'Personal portfolio of Julian Alvarez - Product Manager specializing in SaaS, marketplaces, and AI products',
   generator: 'v0.app',
   icons: {
     icon: [

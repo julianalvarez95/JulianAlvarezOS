@@ -87,14 +87,14 @@ export function AboutApp() {
         <div className="h-20 w-20 overflow-hidden rounded-full border-2 border-primary/30">
           <Image
             src="/JA-Avatar.jpeg"
-            alt="Julián Álvarez"
+            alt="Julian Alvarez"
             width={80}
             height={80}
             className="h-full w-full object-cover"
           />
         </div>
         <div className="text-center">
-          <h2 className="text-lg font-bold text-foreground">Julián Álvarez</h2>
+          <h2 className="text-lg font-bold text-foreground">Julian Alvarez</h2>
           <p className="text-xs text-primary font-mono">Product Manager</p>
         </div>
         <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/20 px-2 py-0.5 text-xs text-accent border border-accent/30">

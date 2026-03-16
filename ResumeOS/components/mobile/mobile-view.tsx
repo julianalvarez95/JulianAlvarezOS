@@ -39,7 +39,7 @@ export function MobileView() {
         <div className="flex items-center justify-between px-4 py-3">
           <div>
             <span className="font-mono text-xs font-semibold text-primary">PM_OS</span>
-            <h1 className="text-lg font-bold text-foreground">Julián Álvarez</h1>
+            <h1 className="text-lg font-bold text-foreground">Julian Alvarez</h1>
           </div>
           <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/20 px-2 py-1 text-xs text-accent border border-accent/30">
             <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
@@ -100,7 +100,7 @@ export function MobileView() {
       {/* Footer */}
       <footer className="border-t border-border/30 bg-card/50 px-4 py-6 text-center">
         <p className="text-xs text-muted-foreground">
-          Julián Álvarez · Product Manager
+          Julian Alvarez · Product Manager
         </p>
         <p className="mt-1 text-xs text-muted-foreground/60">
           Built as a Product Manager OS

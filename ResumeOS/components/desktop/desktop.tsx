@@ -198,8 +198,14 @@ export function Desktop() {
 
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-background">
-      {/* Wallpaper — GNOME-style diagonal gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[oklch(0.14_0.025_280)] via-[oklch(0.18_0.06_295)] to-[oklch(0.14_0.04_240)]" />
+      {/* Wallpaper — dot grid */}
+      <div
+        className="absolute inset-0 bg-[#0D1117]"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)",
+          backgroundSize: "24px 24px",
+        }}
+      />
 
       {/* Top system bar */}
       <TopBar />

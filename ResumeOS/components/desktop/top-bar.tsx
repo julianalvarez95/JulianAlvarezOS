@@ -6,6 +6,14 @@ import { Wifi, Battery, Volume2, Settings } from "lucide-react"
 export function TopBar() {
   const [time, setTime] = useState<string>("")
   const [date, setDate] = useState<string>("")
+  const [uptime, setUptime] = useState<string>("")
+
+  useEffect(() => {
+    const BOOT_DATE = new Date("2025-03-01T00:00:00Z")
+    const now = new Date()
+    const diffH = Math.floor((now.getTime() - BOOT_DATE.getTime()) / (1000 * 60 * 60))
+    setUptime(`up ${Math.floor(diffH / 24)}d ${diffH % 24}h`)
+  }, [])
 
   useEffect(() => {
     const updateDateTime = () => {
@@ -29,11 +37,11 @@ export function TopBar() {
 
   return (
     <div className="absolute top-0 left-0 right-0 z-50 grid h-8 grid-cols-3 items-center bg-card/90 px-4 backdrop-blur-md border-b border-border">
-      {/* Left: Activities */}
+      {/* Left: shell prompt */}
       <div className="flex items-center">
-        <button className="px-3 py-0.5 rounded-md text-xs font-medium text-foreground/80 hover:bg-secondary/50 transition-colors">
-          Activities
-        </button>
+        <span className="font-mono text-xs text-green-400/80">
+          visitor@julian-os:~
+        </span>
       </div>
 
       {/* Center: date + time */}
@@ -44,6 +52,9 @@ export function TopBar() {
 
       {/* Right: system tray */}
       <div className="flex items-center justify-end gap-3">
+        {uptime && (
+          <span className="font-mono text-xs text-muted-foreground">{uptime}</span>
+        )}
         <div className="flex items-center gap-2 text-muted-foreground">
           <Volume2 className="h-3.5 w-3.5" />
           <Wifi className="h-3.5 w-3.5" />

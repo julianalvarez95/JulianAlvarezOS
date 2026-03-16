@@ -20,11 +20,8 @@ export function DesktopIcon({ icon: Icon, label, onClick, gradient }: DesktopIco
         "hover:bg-secondary/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       )}
     >
-      <div className={cn(
-        "flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br border border-border/50 shadow-lg transition-transform duration-200 group-hover:scale-105 group-hover:shadow-xl",
-        gradient ?? "from-card to-secondary"
-      )}>
-        <Icon className={cn("h-7 w-7", gradient ? "text-white" : "text-primary")} />
+      <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-card/50 border border-border/40 shadow-lg transition-transform duration-200 group-hover:scale-105 group-hover:shadow-xl">
+        <Icon className="h-7 w-7 text-foreground/70" />
       </div>
       <span className="max-w-[80px] truncate text-center text-xs font-medium text-foreground/90 drop-shadow-sm">
         {label}

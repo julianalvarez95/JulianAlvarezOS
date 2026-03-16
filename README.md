@@ -1,12 +1,26 @@
 # Julian Alvarez OS
 
-A portfolio built as a desktop OS — draggable windows, animated dock, and a terminal easter egg.
+A portfolio built as a desktop OS — draggable windows, animated dock, boot wizard, and a terminal easter egg.
 
-![Portfolio OS](https://img.shields.io/badge/Next.js-16-black?logo=next.js) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38bdf8?logo=tailwindcss) ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript)
+![Next.js](https://img.shields.io/badge/Next.js-15-black?logo=next.js) ![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38bdf8?logo=tailwindcss) ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript)
 
 ## Overview
 
-JulianAlvarezOS simulates a macOS-style desktop environment in the browser. Each section of the portfolio lives inside its own draggable, resizable window. The dock supports magnification hover effects. On mobile, a linear layout is served instead.
+JulianAlvarezOS simulates a macOS-style desktop environment in the browser. Key features:
+
+- **Draggable, resizable windows** — each portfolio section lives in its own window
+- **Dock magnification** — hover magnification effect on the app dock
+- **Boot wizard** — animated boot sequence + persona selection on first visit
+- **Mobile fallback** — linear layout served for viewports under 1024px
+
+## Boot Wizard
+
+On first visit, the OS runs a two-step onboarding flow:
+
+1. **Boot sequence** — animated terminal-style startup screen
+2. **Persona selection** — choose between **Recruiter** (focused view) or **Explorer** (full desktop)
+
+The desktop adapts based on the selected persona. Press **ESC** at any point to skip the wizard. To replay it later, open the Terminal and run `rerun-wizard`.
 
 ## Apps
 
@@ -20,12 +34,34 @@ JulianAlvarezOS simulates a macOS-style desktop environment in the browser. Each
 | Contact | Contact form + social links |
 | Terminal | Easter egg — run `help` to explore |
 
+## Terminal Easter Egg
+
+Open the Terminal app from the dock and try:
+
+```
+help            list all commands
+whoami          who is Julian?
+about           full bio
+skills          ASCII skill bars
+experience      career timeline
+contact         contact info & links
+pwd             current directory
+ls              list files
+cat <file>      read a file (try: about.md)
+neofetch        system info + ASCII art
+coffee          ☕
+fortune         random product wisdom
+matrix          ???
+sudo hire       apply for Julian's time
+rerun-wizard    replay the boot sequence
+exit / quit     ( ͡° ͜ʖ ͡°)
+```
+
 ## Tech Stack
 
-- **Next.js 16** (App Router, static export)
+- **Next.js 15** (App Router, static export)
 - **Tailwind CSS v4** (configured via `@theme` in `globals.css`)
 - **Radix UI** + **Shadcn/ui** (new-york style, 50+ components)
-- **Recharts** for data visualizations
 - **React Hook Form** + **Zod** for the contact form
 - **Vercel Analytics**
 
@@ -37,39 +73,11 @@ pnpm install
 pnpm dev        # http://localhost:3000
 ```
 
-Other commands:
-
 ```bash
 pnpm build      # Production build
 pnpm start      # Run production server
 pnpm lint       # ESLint
 ```
-
-## Terminal Easter Egg
-
-Open the Terminal app from the dock and try:
-
-```
-help            # list all commands
-neofetch        # system info + ASCII art
-skills          # ASCII skill bars
-sudo hire julian
-matrix
-fortune
-coffee
-```
-
-## Roadmap
-
-| Priority | Feature | Status |
-|----------|---------|--------|
-| P0 | Real portfolio content | Done |
-| P1 | Dock magnification animation | Done |
-| P2 | Window resizing | Done |
-| P3 | Full keyboard nav + Command Palette | Planned |
-| P4 | Terminal easter egg | Done |
-| P5 | Genie minimize animation | Planned |
-| P6 | Mobile app launcher | Planned |
 
 ## Project Structure
 
@@ -81,8 +89,10 @@ ResumeOS/
 ├── components/
 │   ├── desktop/          # OS chrome (desktop, window, dock, top-bar)
 │   ├── apps/             # Portfolio app components
+│   ├── wizard/           # Boot wizard (BootSequence, PersonaSelect, BootWizard)
 │   ├── mobile/           # Mobile layout
 │   └── ui/               # Shadcn/ui components
+├── hooks/                # Custom React hooks
 └── lib/
     └── utils.ts          # cn() helper
 ```

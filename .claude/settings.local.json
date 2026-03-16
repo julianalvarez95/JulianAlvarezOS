@@ -3,7 +3,26 @@
     "allow": [
       "Bash(find /home/julianalvarez/Desktop/JulianAlvarezOS -maxdepth 2 -type f -name \"*.json\" -o -name \"*.md\" -o -name \"Makefile\" -o -name \".cursorrules\" 2>/dev/null | head -30)",
       "Bash(tree -L 3 -I 'node_modules' /home/julianalvarez/Desktop/JulianAlvarezOS/ResumeOS/ 2>/dev/null || find /home/julianalvarez/Desktop/JulianAlvarezOS/ResumeOS -not -path '*/node_modules/*' -not -path '*/.next/*' -type d | sort | head -30)",
-      "Bash(gh auth:*)"
+      "Bash(gh auth:*)",
+      "Bash(cd /home/julianalvarez/Desktop/JulianAlvarezOS/ResumeOS && pnpm install 2>&1 | tail -5)",
+      "Bash(pnpm dev:*)",
+      "Bash(cd:*)",
+      "Bash(pnpm build:*)",
+      "WebFetch(domain:github.com)",
+      "mcp__chrome-devtools__resize_page",
+      "mcp__chrome-devtools__emulate",
+      "mcp__chrome-devtools__take_screenshot",
+      "mcp__chrome-devtools__evaluate_script",
+      "mcp__chrome-devtools__new_page",
+      "mcp__chrome-devtools__click",
+      "mcp__chrome-devtools__take_snapshot",
+      "mcp__chrome-devtools__type_text",
+      "mcp__chrome-devtools__press_key",
+      "mcp__chrome-devtools__list_pages",
+      "mcp__chrome-devtools__navigate_page",
+      "mcp__chrome-devtools__wait_for",
+      "mcp__chrome-devtools__list_console_messages",
+      "Bash(git add:*)"
     ]
   }
 }

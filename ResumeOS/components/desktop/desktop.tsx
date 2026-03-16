@@ -1,13 +1,11 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { TopBar } from "./top-bar"
-import { Dock } from "./dock"
 import { DesktopIcon } from "./desktop-icon"
 import { Window } from "./window"
 import { AboutApp } from "../apps/about-app"
 import { ProjectsApp } from "../apps/projects-app"
-import { MetricsApp } from "../apps/metrics-app"
 import { ProductThinkingApp } from "../apps/product-thinking-app"
 import { ExperimentsApp } from "../apps/experiments-app"
 import { WritingApp } from "../apps/writing-app"
@@ -16,15 +14,16 @@ import { TerminalApp } from "../apps/terminal-app"
 import {
   User,
   FolderKanban,
-  BarChart3,
   Lightbulb,
   FlaskConical,
   BookOpen,
   Mail,
   Terminal as TerminalIcon,
 } from "lucide-react"
+import { toast } from "sonner"
+import { RecruiterWidget } from "./RecruiterWidget"
 
-type AppId = "about" | "projects" | "metrics" | "thinking" | "experiments" | "writing" | "contact" | "terminal"
+type AppId = "about" | "projects" | "thinking" | "experiments" | "writing" | "contact" | "terminal"
 
 interface WindowState {
   id: AppId
@@ -34,21 +33,19 @@ interface WindowState {
   size: { width: number; height: number }
 }
 
-const apps: { id: AppId; label: string; icon: typeof User }[] = [
-  { id: "about", label: "About", icon: User },
-  { id: "projects", label: "Projects", icon: FolderKanban },
-  { id: "metrics", label: "Metrics", icon: BarChart3 },
-  { id: "thinking", label: "Product Thinking", icon: Lightbulb },
-  { id: "experiments", label: "Experiments", icon: FlaskConical },
-  { id: "writing", label: "Resources", icon: BookOpen },
-  { id: "contact", label: "Contact", icon: Mail },
-  { id: "terminal", label: "Terminal", icon: TerminalIcon },
+const apps: { id: AppId; label: string; icon: typeof User; gradient: string }[] = [
+  { id: "about", label: "About", icon: User, gradient: "from-blue-500 to-indigo-600" },
+  { id: "projects", label: "Experience", icon: FolderKanban, gradient: "from-violet-500 to-purple-600" },
+  { id: "thinking", label: "Product Thinking", icon: Lightbulb, gradient: "from-amber-400 to-orange-500" },
+  { id: "experiments", label: "Experiments", icon: FlaskConical, gradient: "from-pink-500 to-rose-600" },
+  { id: "writing", label: "Resources", icon: BookOpen, gradient: "from-teal-500 to-cyan-600" },
+  { id: "contact", label: "Contact", icon: Mail, gradient: "from-orange-500 to-red-500" },
+  { id: "terminal", label: "Terminal", icon: TerminalIcon, gradient: "from-zinc-700 to-zinc-900" },
 ]
 
 const appComponents: Record<AppId, React.ComponentType> = {
   about: AboutApp,
   projects: ProjectsApp,
-  metrics: MetricsApp,
   thinking: ProductThinkingApp,
   experiments: ExperimentsApp,
   writing: WritingApp,
@@ -59,7 +56,6 @@ const appComponents: Record<AppId, React.ComponentType> = {
 const initialSizes: Record<AppId, { width: number; height: number }> = {
   about:       { width: 640, height: 400 },
   projects:    { width: 700, height: 500 },
-  metrics:     { width: 700, height: 500 },
   thinking:    { width: 660, height: 460 },
   experiments: { width: 620, height: 400 },
   writing:     { width: 660, height: 440 },
@@ -70,7 +66,6 @@ const initialSizes: Record<AppId, { width: number; height: number }> = {
 const minSizes: Record<AppId, { width: number; height: number }> = {
   about:       { width: 400, height: 300 },
   projects:    { width: 500, height: 400 },
-  metrics:     { width: 450, height: 350 },
   thinking:    { width: 350, height: 250 },
   experiments: { width: 350, height: 250 },
   writing:     { width: 350, height: 250 },
@@ -79,19 +74,23 @@ const minSizes: Record<AppId, { width: number; height: number }> = {
 }
 
 const initialPositions: Record<AppId, { x: number; y: number }> = {
-  about: { x: 100, y: 80 },
-  projects: { x: 150, y: 100 },
-  metrics: { x: 200, y: 120 },
-  thinking: { x: 250, y: 140 },
-  experiments: { x: 300, y: 160 },
-  writing: { x: 350, y: 180 },
-  contact: { x: 400, y: 200 },
-  terminal: { x: 450, y: 220 },
+  about: { x: 160, y: 80 },
+  projects: { x: 210, y: 100 },
+  thinking: { x: 310, y: 140 },
+  experiments: { x: 360, y: 160 },
+  writing: { x: 410, y: 180 },
+  contact: { x: 460, y: 200 },
+  terminal: { x: 510, y: 220 },
 }
+
+const ABOUT_WINDOW_WIDTH = 820
+const ABOUT_WINDOW_HEIGHT = 500
 
 export function Desktop() {
   const [openWindows, setOpenWindows] = useState<WindowState[]>([])
   const [highestZIndex, setHighestZIndex] = useState(10)
+  const [recruiterWidgetDismissed, setRecruiterWidgetDismissed] = useState(false)
+  const wizardPersona = typeof window !== "undefined" ? localStorage.getItem("wizardPersona") : null
 
   const openApp = (appId: AppId) => {
     const existingWindow = openWindows.find((w) => w.id === appId)
@@ -149,6 +148,36 @@ export function Desktop() {
     )
   }
 
+  // Post-wizard auto-opens based on selected persona (runs once per wizard completion)
+  useEffect(() => {
+    const persona = localStorage.getItem("wizardPersona")
+    const autoOpened = localStorage.getItem("wizardAutoOpened")
+    if (autoOpened) return
+    localStorage.setItem("wizardAutoOpened", "1")
+
+    if (persona === "recruiter") {
+      const x = Math.max(160, Math.round((window.innerWidth - ABOUT_WINDOW_WIDTH) / 2))
+      const y = Math.max(48, Math.round((window.innerHeight - ABOUT_WINDOW_HEIGHT) / 2))
+
+      setHighestZIndex(11)
+      setOpenWindows((prevW) => {
+        if (prevW.some((w) => w.id === "about")) return prevW
+        return [
+          {
+            id: "about",
+            isMinimized: false,
+            zIndex: 11,
+            position: { x, y },
+            size: { width: ABOUT_WINDOW_WIDTH, height: ABOUT_WINDOW_HEIGHT },
+          },
+        ]
+      })
+    } else if (persona === "explorer") {
+      toast("Try the Terminal 👀", { duration: 5000 })
+    }
+    // null / skipped → clean desktop
+  }, [])
+
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-background">
       {/* Wallpaper — GNOME-style diagonal gradient */}
@@ -158,12 +187,13 @@ export function Desktop() {
       <TopBar />
 
       {/* Desktop icons */}
-      <div className="absolute top-16 left-6 flex flex-col gap-6">
+      <div className="absolute top-16 left-6 flex flex-col gap-4">
         {apps.map((app) => (
           <DesktopIcon
             key={app.id}
             icon={app.icon}
             label={app.label}
+            gradient={app.gradient}
             onClick={() => openApp(app.id)}
           />
         ))}
@@ -183,6 +213,7 @@ export function Desktop() {
             initialPosition={window.position}
             initialSize={window.size}
             minSize={minSizes[window.id]}
+            noPadding={window.id === "terminal"}
             onClose={() => closeApp(window.id)}
             onMinimize={() => minimizeApp(window.id)}
             onFocus={() => bringToFront(window.id)}
@@ -194,12 +225,14 @@ export function Desktop() {
         )
       })}
 
-      {/* Dock */}
-      <Dock
-        apps={apps}
-        openWindows={openWindows}
-        onAppClick={openApp}
-      />
+      {/* Recruiter Widget */}
+      {wizardPersona === "recruiter" && !recruiterWidgetDismissed && (
+        <RecruiterWidget
+          onOpenContact={() => openApp("contact")}
+          onDismiss={() => setRecruiterWidgetDismissed(true)}
+        />
+      )}
+
     </div>
   )
 }

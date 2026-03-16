@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-All commands run from the `ResumeOS/` directory:
+All commands run from the `ResumeOS/` subdirectory (i.e., `/home/julianalvarez/Desktop/JulianAlvarezOS/ResumeOS/`). The repo root is one level up and contains only this `CLAUDE.md` and the `ResumeOS/` project folder.
 
 ```bash
 pnpm dev       # Start development server

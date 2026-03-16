@@ -11,6 +11,7 @@ interface WindowProps {
   initialPosition: { x: number; y: number }
   initialSize: { width: number; height: number }
   minSize: { width: number; height: number }
+  noPadding?: boolean
   onClose: () => void
   onMinimize: () => void
   onFocus: () => void
@@ -25,6 +26,7 @@ export function Window({
   initialPosition,
   initialSize,
   minSize,
+  noPadding = false,
   onClose,
   onMinimize,
   onFocus,
@@ -233,7 +235,7 @@ export function Window({
       </div>
 
       {/* Content */}
-      <div className="flex-1 overflow-auto p-4">
+      <div className={cn("flex-1 overflow-hidden", noPadding ? "flex flex-col" : "overflow-auto p-4")}>
         {children}
       </div>
     </div>

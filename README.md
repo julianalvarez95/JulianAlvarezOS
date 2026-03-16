@@ -13,8 +13,7 @@ JulianAlvarezOS simulates a macOS-style desktop environment in the browser. Each
 | App | Description |
 |-----|-------------|
 | About | Bio, skills, and career stats |
-| Projects | Product case studies |
-| Metrics | Career metrics with Recharts visualizations |
+| Experience | Career timeline — 9 roles across 10 years, expandable entries |
 | Product Thinking | PM frameworks and philosophy |
 | Experiments | Side projects |
 | Resources | Writing and curated reads |
@@ -64,9 +63,9 @@ coffee
 
 | Priority | Feature | Status |
 |----------|---------|--------|
-| P0 | Real portfolio content | In progress |
+| P0 | Real portfolio content | Done |
 | P1 | Dock magnification animation | Done |
-| P2 | Window resizing | Planned |
+| P2 | Window resizing | Done |
 | P3 | Full keyboard nav + Command Palette | Planned |
 | P4 | Terminal easter egg | Done |
 | P5 | Genie minimize animation | Planned |

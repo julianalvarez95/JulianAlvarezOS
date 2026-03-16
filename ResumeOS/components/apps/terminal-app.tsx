@@ -15,7 +15,7 @@ interface TerminalLine {
 const COMMANDS = [
   "help", "whoami", "about", "skills", "experience", "contact",
   "pwd", "ls", "cat", "clear", "sudo", "neofetch", "coffee",
-  "fortune", "matrix", "exit", "quit", "halp",
+  "fortune", "matrix", "exit", "quit", "halp", "rerun-wizard", "wizard",
 ]
 
 const FORTUNES = [
@@ -120,6 +120,7 @@ Access granted. 🎉
   fortune       Random product wisdom
   matrix        ???
   sudo hire     Apply for Julian's time
+  rerun-wizard  Replay the boot sequence
   exit / quit   ( ͡° ͜ʖ ͡°)
 ──────────────────────────────────────────`,
 }
@@ -182,7 +183,7 @@ function LineRenderer({ line }: { line: TerminalLine }) {
       </div>
     )
   }
-  return <div className="text-foreground/90 whitespace-pre">{line.content}</div>
+  return <div className="text-foreground/90 whitespace-pre-wrap break-words">{line.content}</div>
 }
 
 // Matrix canvas effect
@@ -348,6 +349,16 @@ export function TerminalApp() {
       const specialLine: TerminalLine = { id: -999, type: "output", content: "", links: [] }
       outLines.push(specialLine)
       addLines(...outLines)
+      return
+    }
+
+    // rerun-wizard
+    if (lower === "rerun-wizard" || lower === "wizard") {
+      outLines.push(makeLine("output", "Clearing wizard state... Rebooting in 1s.", nextId()))
+      addLines(...outLines)
+      setTimeout(() => {
+        window.dispatchEvent(new CustomEvent("rerun-wizard"))
+      }, 1000)
       return
     }
 

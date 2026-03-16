@@ -1,7 +1,6 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { Linkedin, Mail, Download, ExternalLink } from "lucide-react"
+import { Linkedin, Mail, ExternalLink } from "lucide-react"
 import posthog from "posthog-js"
 
 const links = [
@@ -55,15 +54,6 @@ export function ContactApp() {
           )
         })}
       </div>
-
-      {/* Download CV */}
-      <Button
-        onClick={() => posthog.capture("cv_download_clicked")}
-        className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-primary-foreground"
-      >
-        <Download className="mr-2 h-4 w-4" />
-        Download CV
-      </Button>
 
       {/* Availability */}
       <div className="flex items-center gap-2 rounded-lg bg-accent/10 px-4 py-2 border border-accent/20">

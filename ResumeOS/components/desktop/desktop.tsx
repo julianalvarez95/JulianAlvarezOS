@@ -6,7 +6,7 @@ import { DesktopIcon } from "./desktop-icon"
 import { Window } from "./window"
 import { AboutApp } from "../apps/about-app"
 import { ProjectsApp } from "../apps/projects-app"
-import { ProductThinkingApp } from "../apps/product-thinking-app"
+import { ToolsApp } from "../apps/product-thinking-app"
 import { ExperimentsApp } from "../apps/experiments-app"
 import { WritingApp } from "../apps/writing-app"
 import { ContactApp } from "../apps/contact-app"
@@ -14,7 +14,7 @@ import { TerminalApp } from "../apps/terminal-app"
 import {
   User,
   FolderKanban,
-  Lightbulb,
+  Wrench,
   FlaskConical,
   BookOpen,
   Mail,
@@ -37,7 +37,7 @@ interface WindowState {
 const apps: { id: AppId; label: string; icon: typeof User; gradient: string }[] = [
   { id: "about", label: "About", icon: User, gradient: "from-blue-500 to-indigo-600" },
   { id: "projects", label: "Experience", icon: FolderKanban, gradient: "from-violet-500 to-purple-600" },
-  { id: "thinking", label: "Product Thinking", icon: Lightbulb, gradient: "from-amber-400 to-orange-500" },
+  { id: "thinking", label: "Tools & Stack", icon: Wrench, gradient: "from-amber-400 to-orange-500" },
   { id: "experiments", label: "Experiments", icon: FlaskConical, gradient: "from-pink-500 to-rose-600" },
   { id: "writing", label: "Resources", icon: BookOpen, gradient: "from-teal-500 to-cyan-600" },
   { id: "contact", label: "Contact", icon: Mail, gradient: "from-orange-500 to-red-500" },
@@ -47,21 +47,22 @@ const apps: { id: AppId; label: string; icon: typeof User; gradient: string }[] 
 const appComponents: Record<AppId, React.ComponentType> = {
   about: AboutApp,
   projects: ProjectsApp,
-  thinking: ProductThinkingApp,
+  thinking: ToolsApp,
   experiments: ExperimentsApp,
   writing: WritingApp,
   contact: ContactApp,
   terminal: TerminalApp,
 }
 
-const initialSizes: Record<AppId, { width: number; height: number }> = {
-  about:       { width: 640, height: 400 },
-  projects:    { width: 700, height: 500 },
-  thinking:    { width: 660, height: 460 },
-  experiments: { width: 620, height: 400 },
-  writing:     { width: 660, height: 440 },
-  contact:     { width: 520, height: 400 },
-  terminal:    { width: 680, height: 480 },
+// Preferred sizes — actual open size is capped to viewport at runtime
+const preferredSizes: Record<AppId, { width: number; height: number }> = {
+  about:       { width: 820, height: 560 },
+  projects:    { width: 860, height: 640 },
+  thinking:    { width: 740, height: 580 },
+  experiments: { width: 700, height: 540 },
+  writing:     { width: 740, height: 560 },
+  contact:     { width: 560, height: 520 },
+  terminal:    { width: 720, height: 520 },
 }
 
 const minSizes: Record<AppId, { width: number; height: number }> = {
@@ -74,14 +75,29 @@ const minSizes: Record<AppId, { width: number; height: number }> = {
   terminal:    { width: 480, height: 320 },
 }
 
-const initialPositions: Record<AppId, { x: number; y: number }> = {
-  about: { x: 160, y: 80 },
-  projects: { x: 210, y: 100 },
-  thinking: { x: 310, y: 140 },
-  experiments: { x: 360, y: 160 },
-  writing: { x: 410, y: 180 },
-  contact: { x: 460, y: 200 },
-  terminal: { x: 510, y: 220 },
+/** Compute a size and centered position that fits within the current viewport. */
+function getWindowGeometry(appId: AppId): {
+  size: { width: number; height: number }
+  position: { x: number; y: number }
+} {
+  const TOP_BAR = 32   // px reserved for top system bar
+  const DOCK    = 88   // px reserved for dock at bottom
+  const MARGIN  = 24   // minimum gap on each side
+
+  const vw = window.innerWidth
+  const vh = window.innerHeight
+  const usableW = vw - MARGIN * 2
+  const usableH = vh - TOP_BAR - DOCK - MARGIN
+
+  const preferred = preferredSizes[appId]
+  const w = Math.min(preferred.width,  usableW)
+  const h = Math.min(preferred.height, usableH)
+
+  // Center horizontally, place just below the top bar with a small offset
+  const x = Math.round((vw - w) / 2)
+  const y = TOP_BAR + MARGIN
+
+  return { size: { width: w, height: h }, position: { x, y } }
 }
 
 const ABOUT_WINDOW_WIDTH = 820
@@ -109,14 +125,15 @@ export function Desktop() {
 
     const newZIndex = highestZIndex + 1
     setHighestZIndex(newZIndex)
+    const { size, position } = getWindowGeometry(appId)
     setOpenWindows((prev) => [
       ...prev,
       {
         id: appId,
         isMinimized: false,
         zIndex: newZIndex,
-        position: initialPositions[appId],
-        size: initialSizes[appId],
+        position,
+        size,
       },
     ])
   }

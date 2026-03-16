@@ -1,172 +1,108 @@
 "use client"
 
-import { useState } from "react"
-import { ChevronDown, ListOrdered, FlaskConical, Search, Lightbulb } from "lucide-react"
+import { Wrench } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-const frameworks = [
+type ProficiencyLevel = "Expert" | "Proficient" | "Learning"
+
+interface Tool {
+  emoji: string
+  name: string
+  level: ProficiencyLevel
+  description: string
+}
+
+interface Category {
+  title: string
+  tools: Tool[]
+}
+
+const categories: Category[] = [
   {
-    id: "prioritization",
-    title: "How I Prioritize Features",
-    icon: ListOrdered,
-    summary: "RICE framework combined with strategic alignment",
-    content: `I use a modified RICE framework (Reach, Impact, Confidence, Effort) combined with strategic alignment scoring.
-
-**My Process:**
-1. **Gather inputs**: Customer feedback, analytics data, stakeholder requests, competitive intel
-2. **Score each opportunity**: Using a weighted RICE model where Impact carries 2x weight
-3. **Strategic filter**: Does this align with our OKRs? Does it create defensible value?
-4. **Effort calibration**: Engineering team provides T-shirt sizing, I convert to sprint estimates
-5. **Stack rank**: Final priority = (Impact × 2 + Reach + Confidence) / Effort × Strategic Alignment
-
-**Key insight**: I always keep 20% of capacity for quick wins and tech debt. This keeps the team motivated and the codebase healthy.`,
+    title: "Product Management",
+    tools: [
+      { emoji: "📋", name: "Notion", level: "Expert", description: "PRDs, roadmaps, research repos, meeting notes" },
+      { emoji: "🎯", name: "Jira", level: "Expert", description: "Backlogs, sprint ceremonies, cross-team coordination" },
+      { emoji: "⚡", name: "Linear", level: "Proficient", description: "Sprint planning, bug tracking" },
+      { emoji: "🎨", name: "Figma", level: "Proficient", description: "Design reviews, wireframes, UX collaboration" },
+      { emoji: "🗺️", name: "Miro", level: "Proficient", description: "Discovery workshops, opportunity solution trees" },
+    ],
   },
   {
-    id: "experimentation",
-    title: "How I Run Experiments",
-    icon: FlaskConical,
-    summary: "Hypothesis-driven development with clear success metrics",
-    content: `Every feature is an experiment. I treat launches as hypotheses to validate, not finished products.
-
-**Experiment Framework:**
-1. **Hypothesis**: "If we [change X], then [metric Y] will improve by [Z%] because [user behavior reason]"
-2. **Sample size**: Calculate minimum detectable effect, determine required sample
-3. **Duration**: Typically 2-4 weeks, accounting for weekly cycles
-4. **Guardrail metrics**: What shouldn't get worse? (e.g., conversion rate while testing engagement)
-5. **Decision criteria**: Pre-commit to ship/kill/iterate thresholds
-
-**Tools I use**: BigQuery / Data Studio / Looker for analytics, Notion for documentation.
-
-**Win rate**: ~34% of experiments show statistically significant positive results. The other 66% are still valuable learning.`,
+    title: "Data & Analytics",
+    tools: [
+      { emoji: "🔍", name: "BigQuery", level: "Expert", description: "Custom SQL queries, funnel analysis, cohort retention" },
+      { emoji: "📊", name: "Looker", level: "Expert", description: "Dashboards, KPI monitoring, data exploration" },
+      { emoji: "📈", name: "Google Data Studio", level: "Proficient", description: "Executive reporting, business metrics" },
+      { emoji: "🔬", name: "Amplitude", level: "Proficient", description: "Product analytics, behavioral funnels" },
+      { emoji: "🐿️", name: "PostHog", level: "Proficient", description: "Feature flags, session replay, event tracking" },
+    ],
   },
   {
-    id: "discovery",
-    title: "My Discovery Workflow",
-    icon: Search,
-    summary: "Continuous discovery integrated into weekly sprints",
-    content: `Discovery isn't a phase—it's a continuous habit. I aim for at least 2 customer conversations per week.
-
-**Weekly Discovery Rhythm:**
-- **Monday**: Review last week's learnings, update opportunity solution tree
-- **Tuesday-Wednesday**: 2-3 user interviews or usability tests
-- **Thursday**: Synthesize insights, update hypotheses
-- **Friday**: Share learnings with team, update roadmap if needed
-
-**Interview techniques I use:**
-- Jobs-to-be-Done framework for understanding motivation
-- 5 Whys for root cause analysis
-- Prototype testing for validation
-- Diary studies for understanding context
-
-**Documentation**: Everything goes into a searchable research repository. Past insights often become relevant for future decisions.`,
+    title: "Discovery & Research",
+    tools: [
+      { emoji: "📝", name: "Typeform", level: "Proficient", description: "User surveys, NPS collection" },
+      { emoji: "🔥", name: "Hotjar", level: "Proficient", description: "Session recordings, heatmaps" },
+      { emoji: "🧪", name: "Maze", level: "Proficient", description: "Usability testing, prototype validation" },
+      { emoji: "🎥", name: "Loom", level: "Expert", description: "Async updates, user testing recordings" },
+    ],
   },
   {
-    id: "thinking",
-    title: "Product Thinking Principles",
-    icon: Lightbulb,
-    summary: "Core beliefs that guide my product decisions",
-    content: `These principles guide my day-to-day decision making:
-
-**1. Outcomes over outputs**
-Ship less, learn more. A failed experiment that teaches us something is better than a successful feature that doesn't move metrics.
-
-**2. User problems, not solutions**
-Fall in love with the problem. The first solution is rarely the best one.
-
-**3. Data-informed, not data-driven**
-Quantitative data tells you what's happening. Qualitative research tells you why. You need both.
-
-**4. Small bets, fast feedback**
-Ship the smallest thing that tests the riskiest assumption first.
-
-**5. Clarity over certainty**
-It's okay to not know. It's not okay to not have a plan to find out.
-
-**6. Compound improvements**
-Small improvements compound. 1% better every week = 67% better in a year.`,
+    title: "AI & Automation",
+    tools: [
+      { emoji: "⌨️", name: "Cursor", level: "Proficient", description: "AI-assisted development (built this portfolio)" },
+      { emoji: "🤖", name: "Claude / ChatGPT", level: "Expert", description: "PRD drafting, research synthesis, spec review" },
+      { emoji: "🔗", name: "OpenAI API / LangChain", level: "Learning", description: "AI tooling experiments for PM workflows" },
+      { emoji: "✨", name: "V0", level: "Proficient", description: "Rapid UI prototyping" },
+    ],
   },
 ]
 
-export function ProductThinkingApp() {
-  const [expandedId, setExpandedId] = useState<string | null>("prioritization")
+const badgeStyles: Record<ProficiencyLevel, string> = {
+  Expert: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+  Proficient: "bg-sky-500/15 text-sky-400 border-sky-500/30",
+  Learning: "bg-zinc-500/15 text-zinc-400 border-zinc-500/30",
+}
 
+export function ToolsApp() {
   return (
-    <div className="space-y-3">
+    <div className="space-y-6">
       <div className="flex items-center gap-2 text-muted-foreground mb-4">
-        <Lightbulb className="h-4 w-4" />
-        <span className="text-xs font-mono uppercase tracking-wider">Knowledge Base</span>
+        <Wrench className="h-4 w-4" />
+        <span className="text-xs font-mono uppercase tracking-wider">Tools & Stack</span>
       </div>
 
-      {frameworks.map((framework) => {
-        const Icon = framework.icon
-        const isExpanded = expandedId === framework.id
-
-        return (
-          <div
-            key={framework.id}
-            className="rounded-xl border border-border/50 bg-secondary/20 overflow-hidden transition-all"
-          >
-            <button
-              onClick={() => setExpandedId(isExpanded ? null : framework.id)}
-              className="flex w-full items-center gap-3 p-4 text-left hover:bg-secondary/30 transition-colors"
-            >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/20 border border-primary/30">
-                <Icon className="h-5 w-5 text-primary" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="font-semibold text-foreground">{framework.title}</h3>
-                <p className="text-sm text-muted-foreground truncate">{framework.summary}</p>
-              </div>
-              <ChevronDown
-                className={cn(
-                  "h-5 w-5 shrink-0 text-muted-foreground transition-transform",
-                  isExpanded && "rotate-180"
-                )}
-              />
-            </button>
-
-            {isExpanded && (
-              <div className="px-4 pb-4 animate-in slide-in-from-top-2 duration-200">
-                <div className="rounded-lg bg-card/50 p-4 border border-border/30">
-                  <div className="prose prose-sm prose-invert max-w-none">
-                    {framework.content.split("\n\n").map((paragraph, index) => {
-                      if (paragraph.startsWith("**") && paragraph.includes(":**")) {
-                        const [title, ...rest] = paragraph.split(":**")
-                        return (
-                          <div key={index} className="mb-3">
-                            <h4 className="text-sm font-semibold text-primary mb-1">
-                              {title.replace(/\*\*/g, "")}:
-                            </h4>
-                            <p className="text-sm text-foreground/80 leading-relaxed">
-                              {rest.join(":**")}
-                            </p>
-                          </div>
-                        )
-                      }
-                      if (paragraph.match(/^\d\./)) {
-                        return (
-                          <ol key={index} className="list-decimal list-inside space-y-1 text-sm text-foreground/80 mb-3">
-                            {paragraph.split("\n").map((line, lineIndex) => (
-                              <li key={lineIndex} className="leading-relaxed">
-                                {line.replace(/^\d+\.\s*\*\*([^*]+)\*\*:?\s*/, "").trim()}
-                              </li>
-                            ))}
-                          </ol>
-                        )
-                      }
-                      return (
-                        <p key={index} className="text-sm text-foreground/80 leading-relaxed mb-3">
-                          {paragraph}
-                        </p>
-                      )
-                    })}
+      {categories.map((category) => (
+        <div key={category.title}>
+          <h3 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+            {category.title}
+          </h3>
+          <div className="grid grid-cols-2 gap-2">
+            {category.tools.map((tool) => (
+              <div
+                key={tool.name}
+                className="rounded-xl border border-border/50 bg-secondary/20 p-3 flex flex-col gap-2"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="text-base leading-none shrink-0">{tool.emoji}</span>
+                    <span className="font-semibold text-sm text-foreground truncate">{tool.name}</span>
                   </div>
+                  <span
+                    className={cn(
+                      "shrink-0 text-[10px] font-medium px-1.5 py-0.5 rounded-full border",
+                      badgeStyles[tool.level]
+                    )}
+                  >
+                    {tool.level}
+                  </span>
                 </div>
+                <p className="text-xs text-muted-foreground leading-snug">{tool.description}</p>
               </div>
-            )}
+            ))}
           </div>
-        )
-      })}
+        </div>
+      ))}
     </div>
   )
 }

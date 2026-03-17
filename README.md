@@ -27,7 +27,7 @@ The desktop adapts based on the selected persona. Press **ESC** at any point to 
 | App | Description |
 |-----|-------------|
 | About | Bio with › bullet highlights, skills grouped by category (Strategy / Execution / Discovery / Technical), quick facts and stats in sidebar |
-| Experience | Career timeline — 9 roles across 10 years with expandable entries + 7 case studies (MercadoLibre, Mudafy, Paisanos, Magoya) |
+| Experience | Career timeline — 10 roles across 10 years with expandable entries + 8 case studies (WillDom, MercadoLibre, Mudafy, Paisanos, Magoya) |
 | Tools & Stack | 18 tools across 4 categories (PM, Data & Analytics, Discovery & Research, AI & Automation) with Expert / Proficient / Learning badges |
 | Experiments | Side projects |
 | Resources | Writing and curated reads |

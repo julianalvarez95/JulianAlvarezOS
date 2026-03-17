@@ -33,11 +33,11 @@ const timelineEntries: TimelineEntry[] = [
     duration: "1y 9m",
     tags: ["SaaS", "CRM", "B2B", "AI"],
     bullets: [
-      "Owned full product roadmap for Wave CRM with a cross-functional team of 11 engineers",
-      "Built core CRM capabilities: company/persona search, advanced filtering, activity logs",
-      "Shipped pipeline features: follow-up workflows, time-in-stage tracking, KPI analytics dashboards",
-      "Explored AI-assisted recommendations to reduce manual sales ops work",
-      "Improved pipeline visibility and introduced data-driven decision-making tools for commercial teams",
+      "Owned full product roadmap for Wave CRM; 94% WAU growth (141→273) and all-time peak of 200+ WAU sustained through Feb 2026",
+      "24% MAU growth (259→322) over 9 months; Week 1 retention above 80% across key cohorts",
+      "Hub (CRM) + Time Tracker drove 53% of all platform interactions (566K+ events); Time Tracker reached 263 unique users",
+      "Median session 6.5 min across 55K+ sessions; power users averaging 20+ min",
+      "Shipped: pipeline management, activity logs, follow-up workflows, recontact management, time-in-stage, dashboards, KPI widgets, scoring, AI-assisted capabilities, role management",
     ],
     highlight: "current",
   },
@@ -47,11 +47,12 @@ const timelineEntries: TimelineEntry[] = [
     role: "Group Product Manager",
     period: "Dec 2023 – Jul 2024",
     duration: "8m",
-    tags: ["B2B", "SaaS", "Team Leadership"],
+    tags: ["AgTech", "B2B", "Team Leadership"],
     bullets: [
-      "Led product strategy across multiple client engagements as Group PM",
-      "Managed and mentored a team of PMs across concurrent product tracks",
-      "Defined discovery and delivery processes to improve consistency across teams",
+      "Group PM simultaneously for Xarvio (BASF EU), Bayer US (Climate FieldView), and Bayer Cono Sur",
+      "Xarvio: led 10+ farmer interviews in the US, competitive benchmarking, delivered wireframes + upsell/cross-sell map to C-level",
+      "Bayer US: internal apps on world's largest field data platform (wheat and corn)",
+      "Bayer Cono Sur: full dev cycle for Cultivio & Experto Bayer; consolidated 10+ internal tools into one platform",
     ],
   },
   {
@@ -62,9 +63,9 @@ const timelineEntries: TimelineEntry[] = [
     duration: "11m",
     tags: ["Startups", "Incubator", "0-to-1"],
     bullets: [
-      "Worked embedded in startup incubators and accelerators as product advisor and PM",
-      "Helped early-stage startups define MVPs, product strategy, and go-to-market sequencing",
-      "Ran discovery sprints, stakeholder alignment, and roadmap sessions for multiple clients",
+      "Led 2 projects end-to-end; coordinated 10+ stakeholders per engagement",
+      "Tracked 20+ risks per project; 95% project success rate",
+      "Managed 40+ item backlogs; implemented 10+ features per cycle",
     ],
   },
   {
@@ -76,10 +77,11 @@ const timelineEntries: TimelineEntry[] = [
     duration: "4m",
     tags: ["Proptech", "CRM", "Discovery", "LATAM"],
     bullets: [
-      "Managed CRM used by 200+ internal users across the sales ops team in Mexico",
-      "Ran 50+ user interviews to identify high-friction workflows and prioritize backlog",
-      "Benchmarked 4 competing tools and prioritized 15+ solutions for the quarter",
-      "Built and tracked OKR dashboards in BigQuery + Data Studio across 5 key initiatives",
+      "Built internal CRM for visit & client feedback management across 50,000+ properties and 1M MAUs",
+      "Conducted 50+ user interviews to prioritize quarterly backlog",
+      "Developed Data Studio dashboards for real-time operational visibility",
+      "Built WhatsApp chatbot (MessageBird) to automate first contact and reduce lead response time",
+      "Created and tracked OKRs for 5 initiatives across IT, UX, and Sales Ops",
     ],
     highlight: "notable",
   },
@@ -91,9 +93,9 @@ const timelineEntries: TimelineEntry[] = [
     duration: "6m",
     tags: ["Consulting", "B2B", "Product Strategy"],
     bullets: [
-      "Delivered product consulting engagements for B2B clients across LATAM",
-      "Defined roadmaps and discovery frameworks for early-stage digital products",
-      "Facilitated cross-functional workshops to align engineering and business stakeholders",
+      "RUS: replaced manual broker quotation with self-assisted real-time flow via Nación Seguros API — 30% faster in 6 months",
+      "Grido Club: led discovery, definition & delivery of loyalty app for one of Argentina's largest ice cream chains",
+      "Managed roadmap, backlog, and sprint execution across 4+ simultaneous digital products",
     ],
   },
   {
@@ -105,9 +107,10 @@ const timelineEntries: TimelineEntry[] = [
     duration: "6m",
     tags: ["Marketplace", "B2C", "LATAM", "Team Lead"],
     bullets: [
-      "Promoted to Coordinator, managing a cross-regional team across Mexico, Argentina, and Brazil",
-      "Led vertical strategy for Autoparts, Motoparts, Agro, Sports & Fashion categories",
-      "Owned roadmap coordination between IT/Product and commercial business units",
+      "Led Fashion Size Guide from scratch: normalized AR/US/EU sizing across brands, reduced incorrect-size returns (329M active listings, 40% YoY growth)",
+      "Managed cross-regional team across Argentina, Mexico, and Brazil",
+      "Defined roadmap to position MELI as main online apparel destination in LATAM",
+      "Established and monitored OKRs for each team member across 3 locations",
     ],
     highlight: "notable",
   },
@@ -120,10 +123,10 @@ const timelineEntries: TimelineEntry[] = [
     duration: "3y 2m",
     tags: ["Marketplace", "Analytics", "Catalog", "SQL"],
     bullets: [
-      "Drove structured data strategy for marketplace verticals across Argentina, Brazil, Mexico, Chile",
-      "Coordinated multidisciplinary teams: IT, UX, Marketing, Advertising, Business Analytics",
-      "Led Sports & Fashion initiative to become the main online fashion destination in LATAM",
-      "Analyzed metrics via Tableau, MySQL, Looker, and Salesforce to guide product decisions",
+      "Auto Parts Compatibility: built from scratch, reduced 7 duplicate SKUs → 1 per listing; served 85% non-specialist buyers; accompanied 6%→13% market penetration",
+      "Tires: took Mercado Envíos coverage from 38% to 80%+ in 6 months for top 15 brands",
+      "Agro L1 Launch: designed full taxonomy, migrated 10K+ listings, onboarded top brands",
+      "Data: Tableau, Salesforce, MySQL, Looker, Data Studio for commercial decisions",
     ],
     highlight: "notable",
   },
@@ -135,9 +138,10 @@ const timelineEntries: TimelineEntry[] = [
     duration: "1y 7m",
     tags: ["Customer Success", "Automotive", "CRM"],
     bullets: [
-      "Managed customer success workflows for Ford Argentina's digital channels",
-      "Tracked and resolved escalations across the regional CRM system",
-      "Contributed to improvement initiatives for post-sale customer experience",
+      "Managed 4 customer segments: Dealers, Individuals, Ford employees, and fleet customers",
+      "Improved operational efficiency by 20% through data analysis",
+      "15% increase in customer satisfaction scores",
+      "Executed 10+ commercial campaigns; 5+ special customer initiatives tracked",
     ],
   },
   {
@@ -148,8 +152,21 @@ const timelineEntries: TimelineEntry[] = [
     duration: "5m",
     tags: ["Customer Experience", "Marketplace"],
     bullets: [
-      "Handled customer inquiries and dispute resolution for LATAM's largest marketplace",
-      "Identified recurring user friction patterns and escalated to product teams",
+      "Represented customer support in 'Mercado Envíos' business unit; maintained contact with 5 major LATAM carriers (Servientrega, OCA, OCASA, Chilexpress, DHL)",
+      "Managed 100+ inbound cases/month via Salesforce CRM",
+      "KPIs: NPS +10%, Recontact rate -15%, 95% satisfaction rate, Productivity +20%",
+    ],
+  },
+  {
+    id: "frigorifico",
+    company: "Frigorifico Rioplatense",
+    role: "Sales Intern",
+    period: "Jun 2015 – Nov 2016",
+    duration: "1y 6m",
+    tags: ["Sales", "B2B"],
+    bullets: [
+      "Indirect sales through distributor network",
+      "Management of assigned commercial portfolio",
     ],
   },
 ]
@@ -166,6 +183,21 @@ interface CaseStudy {
 }
 
 const caseStudies: CaseStudy[] = [
+  {
+    id: "willdom",
+    company: "WillDom",
+    companyBadge: "Current",
+    title: "Wave CRM — Platform Growth",
+    preview:
+      "Drove 94% WAU growth and 24% MAU growth over 9 months on Wave CRM, with 200+ WAU sustained and Week 1 retention above 80% across key cohorts.",
+    paragraphs: [
+      "When I joined WillDom as PM for Wave CRM, the platform was functional but early-stage — limited feature coverage, modest engagement, and no clear retention story. My role was to own the full product roadmap and turn a basic CRM into a tool people returned to every day.",
+      "The platform metrics tell the story directly: 94% WAU growth (141 → 273 weekly active users), 24% MAU growth (259 → 322) over 9 months, and an all-time peak of 200+ WAU sustained through February 2026. Week 1 retention stayed above 80% across the key cohorts we tracked — a number that reflects whether the product delivers value fast enough to earn a second visit.",
+      "Session data reinforced the depth of engagement: median session of 6.5 minutes across 55K+ sessions, with power users averaging 20+ minutes. The Hub (CRM core) and Time Tracker together drove 53% of all platform interactions — more than 566K events combined. Time Tracker alone reached 263 unique users, which made it one of the highest-adoption features despite being a secondary module.",
+      "On the product side, I led the delivery of: pipeline management, activity logs, follow-up workflows, recontact management, time-in-stage tracking, dashboards, KPI widgets, lead scoring, role management, and early AI-assisted capabilities. Each feature was scoped, prioritized, and shipped with a cross-functional team of 11 engineers — no dedicated design or data resources, which meant product decisions had to be both precise and lightweight.",
+      "The broader challenge was building a multi-org architecture that could serve different commercial team structures without fragmenting the codebase. That architectural work underpinned everything else and allowed Wave to scale from a single-client pilot to a platform supporting multiple organizations simultaneously.",
+    ],
+  },
   {
     id: "tires",
     company: "MercadoLibre",
